@@ -1,0 +1,21 @@
+ALGORITHM sum of overlapping elements solution one
+VAR
+    combo : HASH_TABLE<INTEGER,INTEGER>
+    set1 : ARRAY_OF INTEGER[10]:=[12, 13, 6, 10]
+    set2 : ARRAY_OF INTEGER[10]:=[13, 10, 16, 15]
+    i,som : INTEGER:=0
+BEGIN
+    FOR i FROM 0 TO len(set1)-1 DO
+        combo.insert(set1[i],1)
+    END_FOR
+    FOR i FROM 0 TO len(set2)-1 DO
+        IF(combo.lookup(set2[i])==TRUE) THEN
+            combo.insert(set2[i],2)
+            som=som+set2[i]
+        ELSE
+            combo.insert(set2[i],1)
+        END_IF
+    END_FOR
+    som=som*2
+    Write("The sum of overlapping elements which are present in either of the given set: ", som)
+END
